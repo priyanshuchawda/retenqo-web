@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const permissions = [
+  {
+    name: 'Notification Access (Optional)',
+    purpose:
+      'Allows Retenqo to capture notifications only from apps you explicitly enable.',
+    control:
+      'You can exclude sensitive apps or pause capture anytime in settings.',
+  },
+  {
+    name: 'Microphone (Optional)',
+    purpose: 'Used only when you tap to record a voice-to-memory note.',
+    control:
+      'Never records in the background; only active on explicit user action.',
+  },
+  {
+    name: 'Storage / Media (Optional)',
+    purpose:
+      'Allows importing screenshots for on-device OCR and exporting/restoring encrypted backups.',
+    control: 'Scoped to user-selected files and backups.',
+  },
+  {
+    name: 'Post Notifications',
+    purpose: 'Delivers local reminders for your tracked commitments.',
+    control: 'Can be disabled in Android app settings.',
+  },
+];
+---
+
+<BaseLayout
+  title="Android Permissions"
+  description="Transparent explanation of why Retenqo requests each Android permission and how you control it."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Transparency
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Android Permissions
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      Every permission in Retenqo is optional or scoped to a specific
+      user-initiated feature.
+    </p>
+
+    <div class="mt-10 space-y-4">
+      {
+        permissions.map((perm) => (
+          <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6">
+            <h2 class="text-base font-semibold text-[var(--text-primary)]">
+              {perm.name}
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+              <strong class="text-[var(--text-primary)]">
+                Why it is needed:
+              </strong>{' '}
+              {perm.purpose}
+            </p>
+            <p class="mt-1 text-sm text-[var(--text-secondary)]">
+              <strong class="text-[var(--text-primary)]">Your control:</strong>{' '}
+              {perm.control}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

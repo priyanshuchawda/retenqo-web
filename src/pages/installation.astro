@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+  {
+    title: '1. Download the official APK',
+    detail:
+      'Visit the Download page and get the latest verified APK directly from GitHub Releases.',
+  },
+  {
+    title: '2. Verify the checksum (recommended)',
+    detail:
+      'Compare the SHA-256 hash of your downloaded file against the published checksum on the Download page.',
+  },
+  {
+    title: '3. Open the downloaded APK',
+    detail:
+      'Tap the APK file in your browser or file manager. Android will prompt you to allow installation from that source.',
+  },
+  {
+    title: '4. Allow installation temporarily',
+    detail:
+      'Grant permission only to your trusted browser or file manager. Do not disable Google Play Protect.',
+  },
+  {
+    title: '5. Install and revoke source permission',
+    detail:
+      'Complete installation, then revoke the "Install unknown apps" permission if you no longer need it.',
+  },
+  {
+    title: '6. Configure privacy & local AI',
+    detail:
+      'Open Retenqo, enable only the capture sources you want, and set up your on-device AI model.',
+  },
+];
+---
+
+<BaseLayout
+  title="Installation Guide"
+  description="Step-by-step instructions to safely download, verify, and install the Retenqo Android APK."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Onboarding
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Safe Installation Guide
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      Follow these steps to install Retenqo safely on Android. Permission
+      screens may vary slightly by manufacturer.
+    </p>
+
+    <ol class="mt-10 space-y-4">
+      {
+        steps.map((step) => (
+          <li class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6">
+            <h2 class="text-base font-semibold text-[var(--text-primary)]">
+              {step.title}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+              {step.detail}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</BaseLayout>

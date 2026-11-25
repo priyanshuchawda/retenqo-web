@@ -7,7 +7,13 @@ export default [
   ...tseslint.configs.strict,
   ...eslintPluginAstro.configs.recommended,
   {
-    ignores: ['dist/', '.astro/', 'node_modules/', 'coverage/', 'playwright-report/'],
+    ignores: [
+      'dist/',
+      '.astro/',
+      'node_modules/',
+      'coverage/',
+      'playwright-report/',
+    ],
   },
   {
     rules: {

@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="How It Works"
+  description="Understand how Retenqo captures, processes, stores, and retrieves memories locally on Android."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Architecture
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      How Retenqo works
+    </h1>
+    <p class="mt-4 text-base leading-relaxed text-[var(--text-secondary)]">
+      Retenqo processes your personal information through a four-stage local
+      pipeline on your Android device.
+    </p>
+
+    <div class="mt-10 space-y-6">
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          1. Capture (User-Controlled)
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+          You decide what enters Retenqo: opt-in notifications from selected
+          apps, screenshots, voice notes, or manual entries. Capture can be
+          paused globally at any time.
+        </p>
+      </div>
+
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          2. Understand (On-Device AI)
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+          Local OCR and on-device language models extract key entities,
+          commitments, and dates without sending your personal text to external
+          cloud servers.
+        </p>
+      </div>
+
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          3. Remember (Local Storage)
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+          Memories are indexed locally on your device. You can export encrypted
+          backups or delete any item permanently.
+        </p>
+      </div>
+
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          4. Retrieve (Source-Backed Answers)
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+          Ask natural questions in the assistant. Retenqo retrieves relevant
+          memories and shows the exact source behind every answer.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

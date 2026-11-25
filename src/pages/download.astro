@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config/site';
+import releaseData from '../data/release.generated.json';
+import { formatBytes, parseReleaseState } from '../lib/releases/validation';
+
+const state = parseReleaseState(releaseData);
+---
+
+<BaseLayout
+  title="Download Retenqo for Android"
+  description="Official Android APK distribution for Retenqo with SHA-256 checksum and signing verification."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Official Application Distribution
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Retenqo for Android
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      All official APK builds are distributed directly from{' '}
+      <a
+        href={SITE_CONFIG.appReleasesUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium text-[var(--accent-primary)] underline"
+      >
+        GitHub Releases
+      </a>
+      .
+    </p>
+
+    <div
+      class="mt-10 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6 sm:p-8"
+    >
+      {
+        state.status === 'pending' ? (
+          <div>
+            <span class="inline-flex items-center rounded-full bg-[var(--bg-tertiary)] px-3 py-1 text-xs font-semibold text-[var(--text-primary)]">
+              Awaiting first release
+            </span>
+            <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  Version
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  Pending release
+                </dd>
+              </div>
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  APK size
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  Pending release
+                </dd>
+              </div>
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  SHA-256 checksum
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  Available after publication
+                </dd>
+              </div>
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  Signing certificate
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  Available after verification
+                </dd>
+              </div>
+            </dl>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                disabled
+                class="inline-flex min-h-[48px] cursor-not-allowed items-center rounded-xl bg-[var(--bg-tertiary)] px-6 py-3 text-sm font-semibold text-[var(--text-muted)]"
+              >
+                Download APK (Coming soon)
+              </button>
+              <a
+                href={SITE_CONFIG.appReleasesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-[48px] items-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
+              >
+                View official GitHub Releases
+              </a>
+            </div>
+            <p class="mt-4 text-xs text-[var(--text-muted)]">
+              The APK download becomes available automatically after a valid,
+              signed public release is published.
+            </p>
+          </div>
+        ) : (
+          <div>
+            <span class="inline-flex items-center rounded-full bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent-primary)]">
+              Verified Release {state.release.version}
+            </span>
+            <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  Version
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  {state.release.version}
+                </dd>
+              </div>
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  APK size
+                </dt>
+                <dd class="mt-1 text-sm font-semibold text-[var(--text-primary)]">
+                  {formatBytes(state.release.apkSizeBytes)}
+                </dd>
+              </div>
+              <div class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-4 sm:col-span-2">
+                <dt class="text-xs font-medium text-[var(--text-muted)]">
+                  SHA-256 checksum
+                </dt>
+                <dd class="mt-1 break-all font-mono text-xs text-[var(--text-primary)]">
+                  {state.release.sha256}
+                </dd>
+              </div>
+            </dl>
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href={state.release.apkUrl}
+                class="inline-flex min-h-[48px] items-center rounded-xl bg-[var(--accent-primary)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--accent-hover)]"
+              >
+                Download Official APK ({state.release.version})
+              </a>
+              <a
+                href={state.release.releaseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-[48px] items-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-6 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
+              >
+                Release Notes
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+
+    <section
+      class="mt-12 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+    >
+      <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+        Verify Your Download
+      </h2>
+      <p class="mt-2 text-sm text-[var(--text-secondary)]">
+        After downloading, verify the SHA-256 checksum and APK signature
+        independently:
+      </p>
+      <div class="mt-4 space-y-3 text-xs">
+        <div>
+          <p class="font-semibold text-[var(--text-primary)]">
+            Windows PowerShell
+          </p>
+          <pre
+            class="mt-1 overflow-x-auto rounded-lg bg-[var(--bg-primary)] p-3 font-mono text-[var(--text-secondary)]"><code>Get-FileHash .\Retenqo.apk -Algorithm SHA256</code></pre>
+        </div>
+        <div>
+          <p class="font-semibold text-[var(--text-primary)]">Linux / macOS</p>
+          <pre
+            class="mt-1 overflow-x-auto rounded-lg bg-[var(--bg-primary)] p-3 font-mono text-[var(--text-secondary)]"><code>sha256sum Retenqo.apk</code></pre>
+        </div>
+        <div>
+          <p class="font-semibold text-[var(--text-primary)]">
+            Android SDK (apksigner)
+          </p>
+          <pre
+            class="mt-1 overflow-x-auto rounded-lg bg-[var(--bg-primary)] p-3 font-mono text-[var(--text-secondary)]"><code>apksigner verify --verbose --print-certs Retenqo.apk</code></pre>
+        </div>
+      </div>
+    </section>
+  </section>
+</BaseLayout>

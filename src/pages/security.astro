@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config/site';
+---
+
+<BaseLayout
+  title="Security Architecture"
+  description="How Retenqo secures APK distribution, browser headers, and vulnerability reporting."
+>
+  <article class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Security
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Security Architecture
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      This website is engineered as a minimal-attack-surface static distribution
+      platform aligned with applicable OWASP ASVS 5.0 controls.
+    </p>
+
+    <div
+      class="mt-10 space-y-8 text-sm leading-relaxed text-[var(--text-secondary)]"
+    >
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          Verified APK Distribution
+        </h2>
+        <p class="mt-2">
+          All APK downloads point directly to official GitHub Releases for{' '}
+          <a
+            href={SITE_CONFIG.appRepoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-medium text-[var(--accent-primary)] underline"
+          >
+            priyanshuchawda/retenqo-enterprise
+          </a>
+          . Release metadata is schema-validated at build time, and SHA-256 checksums
+          plus signing certificate fingerprints are published for independent verification.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          Zero-Backend Attack Surface
+        </h2>
+        <p class="mt-2">
+          No database, no user accounts, no server-side sessions, and no
+          third-party tracking scripts. Strict HTTP security headers (HSTS,
+          X-Frame-Options: DENY, X-Content-Type-Options: nosniff,
+          Referrer-Policy: no-referrer) are enforced at the edge.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          Vulnerability Reporting
+        </h2>
+        <p class="mt-2">
+          If you discover a security issue in the website or Android
+          application, please report it responsibly to{' '}
+          <a
+            href={`mailto:${SITE_CONFIG.contactEmail}`}
+            class="font-medium text-[var(--accent-primary)] underline"
+          >
+            {SITE_CONFIG.contactEmail}
+          </a>
+          . See also{' '}
+          <a
+            href="/.well-known/security.txt"
+            class="font-medium text-[var(--accent-primary)] underline"
+          >
+            security.txt
+          </a>
+          .
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

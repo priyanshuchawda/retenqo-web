@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  Bell,
+  Camera,
+  Mic,
+  Cpu,
+  Search,
+  CheckCircle2,
+  Lock,
+  ShieldCheck,
+  WifiOff,
+} from 'lucide-astro';
+
+const features = [
+  {
+    icon: Bell,
+    title: 'Opt-in Notification Capture',
+    description:
+      'Selectively capture important messages and alerts from apps you choose. Pause or exclude apps anytime.',
+  },
+  {
+    icon: Camera,
+    title: 'Screenshot Understanding',
+    description:
+      'Extract text, dates, and key details from screenshots using on-device OCR.',
+  },
+  {
+    icon: Mic,
+    title: 'Voice-to-Memory',
+    description:
+      'Capture spoken thoughts and convert them into structured, searchable memories.',
+  },
+  {
+    icon: Cpu,
+    title: 'Local AI Assistant',
+    description:
+      'Ask natural language questions and get answers generated directly on your device.',
+  },
+  {
+    icon: Search,
+    title: 'Source-Backed Answers',
+    description:
+      'Every answer cites the original saved memory so you can verify facts immediately.',
+  },
+  {
+    icon: CheckCircle2,
+    title: 'Commitment Tracking & Smart Reminders',
+    description:
+      'Automatically detect upcoming commitments and turn them into timely reminders.',
+  },
+  {
+    icon: Lock,
+    title: 'Encrypted Backups',
+    description:
+      'Export and restore your personal memory database with user-controlled encryption.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Granular Privacy Controls',
+    description:
+      'Inspect, edit, or permanently delete any stored memory at any time.',
+  },
+  {
+    icon: WifiOff,
+    title: 'Offline-First Processing',
+    description:
+      'Core capture, search, and local AI inference work without an internet connection.',
+  },
+];
+---
+
+<BaseLayout
+  title="Features"
+  description="Explore Retenqo's privacy-first, on-device AI memory capabilities for Android."
+>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+    <div class="max-w-2xl">
+      <p
+        class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+      >
+        Capabilities
+      </p>
+      <h1
+        class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+      >
+        Built for private, reliable recall
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-[var(--text-secondary)]">
+        Retenqo combines selective capture, local indexing, and on-device AI so
+        your personal context stays useful and under your control.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((feature) => {
+          const Icon = feature.icon;
+          return (
+            <article class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6">
+              <Icon
+                class="h-6 w-6 text-[var(--accent-primary)]"
+                aria-hidden="true"
+              />
+              <h2 class="mt-4 text-lg font-semibold text-[var(--text-primary)]">
+                {feature.title}
+              </h2>
+              <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+                {feature.description}
+              </p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </section>
+</BaseLayout>

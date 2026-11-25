@@ -10,7 +10,8 @@ export const SITE_CONFIG = {
     'Retenqo is a private, on-device AI personal memory assistant for Android. Capture important information, track commitments, and retrieve memories offline.',
   url: 'https://retenqo.pages.dev',
   appRepoUrl: 'https://github.com/priyanshuchawda/retenqo-enterprise',
-  appReleasesUrl: 'https://github.com/priyanshuchawda/retenqo-enterprise/releases',
+  appReleasesUrl:
+    'https://github.com/priyanshuchawda/retenqo-enterprise/releases',
   webRepoUrl: 'https://github.com/priyanshuchawda/retenqo-web',
   contactEmail: 'priyanshuchawda20@gmail.com',
   nav: [

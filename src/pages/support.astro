@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config/site';
+---
+
+<BaseLayout
+  title="Support"
+  description="Report bugs, request features, or get help with Retenqo."
+>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Help
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Support &amp; Troubleshooting
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      Need help with Retenqo? Check the <a
+        href="/faq"
+        class="text-[var(--accent-primary)] underline">FAQ</a
+      > or open an issue on GitHub.
+    </p>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          Android App Issues
+        </h2>
+        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+          Report crashes, model download issues, or feature bugs in the Android
+          repository.
+        </p>
+        <a
+          href={`${SITE_CONFIG.appRepoUrl}/issues`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-flex min-h-[44px] items-center rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[var(--accent-hover)]"
+        >
+          Open App Issue
+        </a>
+      </div>
+
+      <div
+        class="rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)] p-6"
+      >
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          Website Issues
+        </h2>
+        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+          Report broken links, accessibility issues, or documentation
+          corrections on the website repository.
+        </p>
+        <a
+          href={`${SITE_CONFIG.webRepoUrl}/issues`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 inline-flex min-h-[44px] items-center rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-tertiary)]"
+        >
+          Open Website Issue
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Clear explanation of what data Retenqo's website, hosting provider, GitHub Releases, and Android app process."
+>
+  <article class="mx-auto max-w-4xl px-4 py-16 sm:px-6">
+    <p
+      class="text-xs font-semibold tracking-widest text-[var(--accent-primary)] uppercase"
+    >
+      Privacy
+    </p>
+    <h1
+      class="mt-3 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl"
+    >
+      Privacy Policy
+    </h1>
+    <p class="mt-4 text-base text-[var(--text-secondary)]">
+      Retenqo is built on a simple principle: your personal memories belong on
+      your device. This policy explains what happens across the website,
+      hosting, APK distribution, and Android app.
+    </p>
+
+    <div
+      class="mt-10 space-y-8 text-sm leading-relaxed text-[var(--text-secondary)]"
+    >
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          1. This Website
+        </h2>
+        <p class="mt-2">
+          This static website does not use tracking cookies, third-party
+          advertising, user fingerprinting, or analytics scripts. We do not
+          collect personal information or run user accounts.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          2. Hosting &amp; Network Requests
+        </h2>
+        <p class="mt-2">
+          The website is served as static files over HTTPS via Cloudflare Pages.
+          Like any web host, Cloudflare may process standard HTTP request
+          metadata (such as IP address and user agent) for security, DDoS
+          protection, and routing.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          3. APK Downloads via GitHub Releases
+        </h2>
+        <p class="mt-2">
+          When you click to download the Android APK, your browser connects
+          directly to GitHub Releases. GitHub's own privacy policy applies to
+          that download request.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+          4. The Retenqo Android Application
+        </h2>
+        <p class="mt-2">
+          Memories, commitments, and embeddings are stored locally on your
+          device. Core AI inference runs on-device. Network access is only used
+          when you explicitly choose to download an on-device model or check for
+          updates.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
